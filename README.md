@@ -1,3 +1,5 @@
-# Ashlyn's-Template
+# Simple Notes
 
-This is a basic angular template I like to use. It is a custom version of Yeoman with a focus on Heroku deployment with node.js.
+Application to create, edit, and delete notes stored on local storage
+
+Run Grunt Serve to start up application
