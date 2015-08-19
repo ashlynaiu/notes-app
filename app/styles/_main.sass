@@ -1,0 +1,51 @@
++create-media(note-functions, (middle, standard, before))
+    no-op: 1 //needed since this won't be created if this is an empty field
+
+//Using a sass list and then iterating through it to create the media elements
+$functions: 'edit', 'delete'
+
+@each $functions in $functions
+    .notes-function-#{$functions}
+        +get-media(note-functions, '.svg-notes-#{$functions}')
+
+a.notes-function-edit
+    color: $edit-color
+    +media(except-handhelds)
+        margin-right: 25px
+
+a.notes-function-delete
+    color: $delete-color
+
+.notes-view-main
+    padding: 60px 0
+    h1
+        text-align: center
+        +media(handhelds)
+            font-size: 40px
+            margin-bottom: 50px
+            line-height: 60px
+        +media(except-handhelds)
+            margin-bottom: 70px
+    button
+        margin: 0 auto
+        text-align: center
+        display: table-cell
+
+    .notes-main-saved-note
+        margin-top: 40px
+        border: 1px solid $border-color
+        padding: 30px
+        +border-radius(4px)
+        h3
+            border-bottom: 1px solid $border-color
+            margin-bottom: 20px
+            padding-bottom: 20px
+        &--functions
+            +media(except-handhelds)
+                +display-flex
+            +media(handhelds)
+                margin-bottom: 20px
+            a 
+                cursor: pointer
+                span
+                    padding-left: 8px

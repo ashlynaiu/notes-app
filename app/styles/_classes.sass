@@ -69,19 +69,12 @@ p
 .port-main-text-align
   text-align: center
 
-.port-main-section-end
-  margin-bottom: 40px
 
-%port-main-img
-  margin-bottom: 40px
-  width: 100%
-
-.port-main-img
-  @extend %port-main-img
-  &-border
-    @extend %port-main-img
-    border-bottom: 1px solid #ececec
-
-.port-main-hide-image-moible
+.notes-main-button
+  background-color: $secondary-text
+  color: #fff
+  padding: 18px 25px
+  +border-radius(4px)
+  font-size: 14px
   +media(handhelds)
-    display: none
+    width: 100%

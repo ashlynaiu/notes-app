@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name ashlynTemplate
+ * @name notesApp
  * @description
- * # ashlynTemplate
+ * # notesApp
  *
  * Main module of the application.
  */
 angular
-  .module('ashlynTemplate', [
+  .module('notesApp', [
     'ngAnimate',
     'ngSanitize',
     'ngTouch',
@@ -30,7 +30,7 @@ angular
         parent: 'frame',
         templateUrl: 'views/navigation.html'
       })
-      .state('home', {
+      .state('main', {
         url: '',
         parent: 'frame',
         templateUrl: 'views/main.html',

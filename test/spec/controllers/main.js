@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('ashlynTemplate'));
+  beforeEach(module('notesApp'));
 
   var MainCtrl,
     scope;
