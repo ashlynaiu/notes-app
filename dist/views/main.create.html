@@ -1,7 +1,7 @@
-<form name="form" novalidate class="port-main-form" ng-submit="submit()"> <div class="port-main-form-input-container" ng-class="{ &quot;has-focus&quot;: form.title.hasFocus,
+<form name="form" novalidate class="port-main-form"> <div class="port-main-form-input-container" ng-class="{ &quot;has-focus&quot;: form.title.hasFocus,
             &quot;has-success&quot;: form.title.$valid,
             &quot;has-error&quot;: form.title.$invalid && (form.$submitted || form.title.$touched),
             &quot;is-empty&quot;: !form.title.$viewValue }"> <label for="title">Note Title</label> <input type="text" name="title" ng-model="notes.title" required ng-focus="form.title.hasFocus=true" ng-blur="form.title.hasFocus=false"> </div> <div class="port-main-form-input-container--label" ng-class="{ &quot;has-focus&quot;: form.message.hasFocus,
             &quot;has-success&quot;: form.message.$valid,
             &quot;has-error&quot;: form.message.$invalid && (form.$submitted || form.message.$touched),
-            &quot;is-empty&quot;: !form.message.$viewValue }"> <label for="message">What's on your mind?</label> <textarea name="message" ng-model="notes.message" required ng-focus="form.message.hasFocus=true" ng-blur="form.message.hasFocus=false"></textarea> </div> <button class="notes-main-button" type="submit">Send your message!</button> </form>
+            &quot;is-empty&quot;: !form.message.$viewValue }"> <label for="message">What's on your mind?</label> <textarea name="message" ng-model="notes.message" required ng-focus="form.message.hasFocus=true" ng-blur="form.message.hasFocus=false"></textarea> </div> <button class="notes-main-button" type="submit" ng-click="submit(form)">Send your message!</button> </form>

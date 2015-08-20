@@ -8,10 +8,8 @@
  * Controller of the notesApp
  */
 angular.module('notesApp')
-  .controller('CreateNewNoteCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .filter('reverse', function() {
+      return function(items) {
+        return items.slice().reverse();
+      };
   });

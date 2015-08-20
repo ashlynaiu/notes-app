@@ -1,4 +1,4 @@
-<form name="form" novalidate class="port-main-form" ng-submit="submit()">
+<form name="form" novalidate class="port-main-form">
     <div class="port-main-form-input-container" 
             ng-class='{ "has-focus": form.title.hasFocus,
             "has-success": form.title.$valid,
@@ -6,7 +6,7 @@
             "is-empty": !form.title.$viewValue }'>
         <label for="title">Note Title</label>
         <input type="text" name="title" ng-model="notes.title" required
-            ng-focus='form.title.hasFocus=true', ng-blur='form.title.hasFocus=false'>
+            ng-focus='form.title.hasFocus=true', ng-blur='form.title.hasFocus=false' >
     </div>
     <div class="port-main-form-input-container--label" 
             ng-class='{ "has-focus": form.message.hasFocus,
@@ -15,7 +15,7 @@
             "is-empty": !form.message.$viewValue }'>
         <label for="message">What's on your mind?</label>
         <textarea name="message" ng-model="notes.message" required
-            ng-focus='form.message.hasFocus=true', ng-blur='form.message.hasFocus=false'></textarea>
+            ng-focus='form.message.hasFocus=true', ng-blur='form.message.hasFocus=false' ></textarea>
     </div>
-    <button class="notes-main-button" type="submit">Send your message!</button>
+    <button class="notes-main-button" type="submit" ng-click="submit(form)">Send your message!</button>
 </form>

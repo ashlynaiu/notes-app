@@ -45,6 +45,8 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.08)
             margin-top: 10px
             font-size: 16px
+        label
+            color: $border-color
         &.is-empty label
             @extend %port-main-form-small-label
         &.has-focus 
@@ -70,6 +72,11 @@
     
     .has-error 
         input
-            border-bottom: 1px solid $warning !important
-        label
-            color: $warning
+            border-bottom: 1px solid $warning
+
+form.ng-pristine
+    input
+        border-color: $border-color !important
+
+    label
+        color: $border-color !important
