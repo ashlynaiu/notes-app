@@ -70,11 +70,19 @@ p
   text-align: center
 
 
-.notes-main-button
-  background-color: $secondary-text
-  color: #fff
+%notes-main-button-standard 
   padding: 18px 25px
-  +border-radius(4px)
   font-size: 14px
+  background-color: transparent
   +media(handhelds)
     width: 100%
+.notes-main-button
+  @extend %notes-main-button-standard
+  background-color: $secondary-text
+  color: #fff
+  +border-radius(4px)
+  &--simple
+    @extend %notes-main-button-standard
+    color: $secondary-text
+    &:hover
+      color: $text-color

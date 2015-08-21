@@ -9,7 +9,6 @@
  */
 angular.module('notesApp')
   .directive('createNote', function (notesData) {
-    console.log('loaded directive');
     return {
         templateUrl: 'views/main.create.html',
 

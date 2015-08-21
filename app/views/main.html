@@ -1,16 +1,23 @@
 <div class="notes-view-main">
     <div class="port-main-content">
         <h1>Simple Notes</h1>
-        <button class="notes-main-button" ng-click="toogleCreate=true" ng-hide="toogleCreate"><i>Create a New Note</i></button>
+        <button class="notes-main-button" ng-click="toogleCreate=true" ng-hide="toogleCreate">Create a New Note</button>
         <div create-note ng-show="toogleCreate"></div>
-        <div class="notes-main-saved-note" ng-repeat="note in notes | reverse">
-            <h3><input ng-model="note.title"></h3>
-            <textarea ng-model="note.message">{{note.message}}</textarea>
-            <div class="notes-main-saved-note--functions">
-                <a class="notes-function-edit" ng-click="update($index)"><span>Edit</span></a>
-                <a class="notes-function-delete" ng-click="delete($index)"><span>Delete</span></a>
+        <form class="notes-main-saved-note" 
+            ng-repeat="note in notes | reverse" 
+            ng-mouseover="editStyles=true" 
+            ng-mouseleave="editStyles=false" 
+            ng-class='{ "has-edit-style": editStyles}'>
+                <input ng-model="note.title" class="notes-main-saved-note--title">
+                <textarea ng-model="note.message" class="notes-main-saved-note--message">{{note.message}}</textarea>
+                <div class="notes-main-saved-note--functions">
+                    <a class="notes-function-delete" ng-click="delete($index)"><span>Delete</span></a>
+                    <p>Your note is automatically saved as you type.</p>
             </div>
+        </form>
+        <div class="notes-view-main-model">
+            <button class="notes-main-button--simple" ng-click="toogleButton()">Check out the data model</button>
+            <p ng-show="toogleModel">{{notes}}</p>
         </div>
-        {{notes}}
     </div>
 </div>
