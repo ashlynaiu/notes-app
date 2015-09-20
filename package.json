@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.14.0",
     "connect-modrewrite": "^0.8.1",
     "ejs": "^2.3.3",
     "express": "^4.13.1",
     "express-logger": "0.0.3",
+    "grunt-nodemon": "^0.4.0",
     "gzippo": "^0.2.0",
+    "nodemon": "^1.6.1",
     "pg": "^4.4.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.9.0"

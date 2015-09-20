@@ -2,18 +2,18 @@
 module.exports = function(sequelize, DataTypes) {
 	var Note = sequelize.define("Note", {
 		id: {
-	    	type:Sequelize.INTEGER,
+	    	type: DataTypes.INTEGER,
 	    	primaryKey: true,
 	    	autoIncrement: true
 		},
 		title: {
-			type: Sequelize.STRING
+			type: DataTypes.STRING
 		},
 		message: {
-			type: Sequelize.TEXT
+			type: DataTypes.TEXT
 		},
 		visible: {
-			type: Sequelize.BOOLEAN,
+			type: DataTypes.BOOLEAN,
 			defaultValue: true
 		}
  	});

@@ -1,19 +1,20 @@
 var gzippo = require('gzippo');
 var express = require('express');
+var routes = require('./routes'); 
 var models = require('./models');
-var routes = require('./routes'); //place on top of the file</pre>
-
+var bodyParser = require('body-parser');
 var app = express();
+
 app.use(gzippo.staticGzip("" + __dirname + "/dist"));
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use( bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
-models.sequelize.sync().then(function() {
- var server = app.listen(app.get('port'), function() {
- console.log('Express server listening on port ' + server.address().port);
- });
-});
+app.get('/notes', routes.getNotes);
+app.post('/notes', routes.saveNotes);
 
-app.get('/todo', routes.gettodos);
-app.post('/todo', routes.savetodos);
+models.sequelize.sync();
 
 // App Entry
 app.get('/*', function(req, res){

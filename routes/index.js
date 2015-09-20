@@ -1,23 +1,19 @@
 var models = require("../models");
- 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
 
-exports.gettodos = function(req, res) {
-    models.Todo.findAll().then(function(todos){
-        res.json(todos);
+exports.getNotes = function(req, res) {
+    models.Note.findAll().then(function(notes){
+        res.json(notes);
     });
 };
  
-exports.savetodos = function(req, res) {
-    models.Todo.create({
-        text: req.body.text,
-        done: req.body.done
-    }).then(function(todos){
-        res.json(todos.dataValues);
+exports.saveNotes = function(req, res) {
+    models.Note.create({
+        message: req.body.message,
+        title: req.body.title
+    }).then(function(notes){
+        res.json(notes.dataValues);
     }).catch(function(error){
-        console.log("ops: " + error);
+        console.log("ERROR >>>> " + error);
         res.status(500).json({ error: 'error' });
     });
 };

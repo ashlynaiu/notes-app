@@ -21,11 +21,19 @@ module.exports = function (grunt) {
   };
 
   var modRewrite = require('connect-modrewrite');
+
+  grunt.loadNpmTasks('grunt-nodemon');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
     yeoman: appConfig,
+
+    nodemon: {
+      dev: {
+        script: 'web.js'
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -445,6 +453,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
+      'nodemon',
       'watch'
     ]);
   });

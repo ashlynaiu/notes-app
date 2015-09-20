@@ -4,7 +4,7 @@
         <button class="notes-main-button" ng-click="toogleCreate=true" ng-hide="toogleCreate">Create a New Note</button>
         <div create-note ng-show="toogleCreate"></div>
         <form class="notes-main-saved-note" 
-            ng-repeat="note in notes | reverse" 
+            ng-repeat="note in notes" 
             ng-mouseover="editStyles=true" 
             ng-mouseleave="editStyles=false" 
             ng-class='{ "has-edit-style": editStyles}'>
