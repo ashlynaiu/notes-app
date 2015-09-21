@@ -12,4 +12,4 @@ angular.module('notesApp')
       return function(items) {
         return items.slice().reverse();
       };
-  });
+});

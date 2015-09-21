@@ -11,25 +11,26 @@ angular.module('notesApp')
   .controller('MainCtrl', function ($scope, notesData) {
     $scope.notes = [];
     $scope.toogleModel = false;
-
-    notesData.getNotes()
-        .success(function(data){
+    $scope.notes = notesData.getNotes()
+        .success(function(data) {
             $scope.notes = data;
+            console.log(data);
         })
-        .error(function(err) {
-            console.log('Error >>>>', err);
-        })
-    $scope.delete = function(index) {
-        $scope.notes.reverse();
-        $scope.notes.splice(index, 1);
-        $scope.notes.reverse();
-    };
-    $scope.toogleButton = function() {
-        if ($scope.toogleModel === false) {
-          $scope.toogleModel = true;
-        }
-        else {
-          $scope.toogleModel = false;
-        }
-    };
+        .error(function(error) {
+            console.log('Error >>>>', error);
+        });
+
+    // $scope.delete = function(index) {
+    //     $scope.notes.reverse();
+    //     $scope.notes.splice(index, 1);
+    //     $scope.notes.reverse();
+    // };
+    // $scope.toogleButton = function() {
+    //     if ($scope.toogleModel === false) {
+    //       $scope.toogleModel = true;
+    //     }
+    //     else {
+    //       $scope.toogleModel = false;
+    //     }
+    // };
   });

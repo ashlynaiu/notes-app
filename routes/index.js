@@ -5,7 +5,7 @@ exports.getNotes = function(req, res) {
         res.json(notes);
     });
 };
- 
+
 exports.saveNotes = function(req, res) {
     models.Note.create({
         message: req.body.message,

@@ -8,12 +8,9 @@
  * Controller of the notesApp
  */
 angular.module('notesApp').factory('notesData', function($http) {
-    return  {
-        getNotes : function() {
-            return $http({
-                url: '/notes',
-                method: 'GET'
-            });
+    return {
+        getNotes: function() {
+            return $http.get('/notes');
         }
     };
 });

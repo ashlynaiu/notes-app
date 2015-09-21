@@ -43,10 +43,10 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        tasks: ['newer:jshint:all']
+        // options: {
+        //   livereload: '<%= connect.options.livereload %>'
+        // }
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
@@ -58,17 +58,17 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js']
-      },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
       }
+      // livereload: {
+      //   options: {
+      //     livereload: '<%= connect.options.livereload %>'
+      //   },
+      //   files: [
+      //     '<%= yeoman.app %>/{,*/}*.html',
+      //     '.tmp/styles/{,*/}*.css',
+      //     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+      //   ]
+      // }
     },
 
     iconizr: {
@@ -86,51 +86,52 @@ module.exports = function (grunt) {
       },
     },
     // The actual grunt server settings
+    // connect: {
+    //   options: {
+    //     port: 5000,
+    //     Change this to '0.0.0.0' to access the server from outside.
+    //     hostname: 'localhost',
+    //     livereload: 35729
+    //   },
+    //   livereload: {
+    //     options: {
+    //       open: true,
+    //       middleware: function (connect) {
+    //         return [
+    //           modRewrite([
+    //             '!(\\..+)$ / [L]'
+    //           ]),
+    //           connect.static('.tmp'),
+    //           connect().use(
+    //             '/bower_components',
+    //             connect.static('./bower_components')
+    //           ),
+    //           connect().use(
+    //             '/app/styles',
+    //             connect.static('./app/styles')
+    //           ),
+    //           connect.static(appConfig.app)
+    //         ];
+    //       }
+    //     }
+    //   },
+    //   test: {
+    //     options: {
+    //       port: 9001,
+    //       middleware: function (connect) {
+    //         return [
+    //           connect.static('.tmp'),
+    //           connect.static('test'),
+    //           connect().use(
+    //             '/bower_components',
+    //             connect.static('./bower_components')
+    //           ),
+    //           connect.static(appConfig.app)
+    //         ];
+    //       }
+    //     }
+    //   },
     connect: {
-      options: {
-        port: 5000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      livereload: {
-        options: {
-          open: true,
-          middleware: function (connect) {
-            return [
-              modRewrite([
-                '!(\\..+)$ / [L]'
-              ]),
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
-        }
-      },
       dist: {
         options: {
           open: true,
@@ -452,7 +453,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
-      'connect:livereload',
+      // 'connect:livereload',
       'nodemon',
       'watch'
     ]);
