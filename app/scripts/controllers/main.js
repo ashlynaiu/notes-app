@@ -19,7 +19,7 @@ angular.module('notesApp')
         .error(function(error) {
             console.log('Error >>>>', error);
         });
-
+    console.log('test7');
     // $scope.delete = function(index) {
     //     $scope.notes.reverse();
     //     $scope.notes.splice(index, 1);

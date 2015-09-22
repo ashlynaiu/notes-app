@@ -20,9 +20,6 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
-  var modRewrite = require('connect-modrewrite');
-
-  grunt.loadNpmTasks('grunt-nodemon');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -31,7 +28,8 @@ module.exports = function (grunt) {
 
     nodemon: {
       dev: {
-        script: 'web.js'
+        script: 'web.js',
+        watch: ['routes', 'models']
       }
     },
 
@@ -43,7 +41,8 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all']
+        tasks: ['newer:jshint:all', 'concat'],
+        console.log('js changed'),
         // options: {
         //   livereload: '<%= connect.options.livereload %>'
         // }
@@ -58,17 +57,13 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js']
+      },
+      server: {
+        files: ['.rebooted'],
+        options: {
+          livereload: true
+        }
       }
-      // livereload: {
-      //   options: {
-      //     livereload: '<%= connect.options.livereload %>'
-      //   },
-      //   files: [
-      //     '<%= yeoman.app %>/{,*/}*.html',
-      //     '.tmp/styles/{,*/}*.css',
-      //     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-      //   ]
-      // }
     },
 
     iconizr: {
@@ -84,60 +79,6 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/images/svg'],
         dest: '<%= yeoman.app %>/images/svg-output'
       },
-    },
-    // The actual grunt server settings
-    // connect: {
-    //   options: {
-    //     port: 5000,
-    //     Change this to '0.0.0.0' to access the server from outside.
-    //     hostname: 'localhost',
-    //     livereload: 35729
-    //   },
-    //   livereload: {
-    //     options: {
-    //       open: true,
-    //       middleware: function (connect) {
-    //         return [
-    //           modRewrite([
-    //             '!(\\..+)$ / [L]'
-    //           ]),
-    //           connect.static('.tmp'),
-    //           connect().use(
-    //             '/bower_components',
-    //             connect.static('./bower_components')
-    //           ),
-    //           connect().use(
-    //             '/app/styles',
-    //             connect.static('./app/styles')
-    //           ),
-    //           connect.static(appConfig.app)
-    //         ];
-    //       }
-    //     }
-    //   },
-    //   test: {
-    //     options: {
-    //       port: 9001,
-    //       middleware: function (connect) {
-    //         return [
-    //           connect.static('.tmp'),
-    //           connect.static('test'),
-    //           connect().use(
-    //             '/bower_components',
-    //             connect.static('./bower_components')
-    //           ),
-    //           connect.static(appConfig.app)
-    //         ];
-    //       }
-    //     }
-    //   },
-    connect: {
-      dist: {
-        options: {
-          open: true,
-          base: '<%= yeoman.dist %>'
-        }
-      }
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -421,7 +362,10 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'compass:server'
+        'compass:server',
+        'jshint', 
+        'nodemon', 
+        'watch'
       ],
       test: [
         'compass'
@@ -442,6 +386,10 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-nodemon');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -449,13 +397,21 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
+      'clean:dist',
       'wiredep',
-      'concurrent:server',
-      'autoprefixer:server',
-      // 'connect:livereload',
-      'nodemon',
-      'watch'
+      'useminPrepare',
+      'concurrent:dist',
+      'autoprefixer',
+      'concat',
+      'ngAnnotate',
+      'copy:dist',
+      'cdnify',
+      'cssmin',
+      'uglify',
+      'filerev',
+      'usemin',
+      'htmlmin',
+      'concurrent:server'
     ]);
   });
 
