@@ -13,8 +13,7 @@ angular
     'ngAnimate',
     'ngSanitize',
     'ngTouch',
-    'ui.router',
-    'ngAnimate'
+    'ui.router'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);

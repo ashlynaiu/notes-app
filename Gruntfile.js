@@ -299,10 +299,11 @@ module.exports = function (grunt) {
     // to use the Usemin blocks.
     cssmin: {
       dist: {
-        files: [{
-            src: ['<%= yeoman.dist %>/styles/tmp/all.css'],
-            dest: '<%= yeoman.dist %>/styles/style.css'
-        }]
+        files: {
+            '<%= yeoman.dist %>/styles/tmp/all.css': [
+              '.tmp/styles/style.css'
+            ]
+        }
       }
     },
     uglify: {
